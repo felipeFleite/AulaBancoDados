@@ -4,63 +4,63 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function CreateMatricula() {
-  const [aluno, setAluno] = useState('');
-  const [turma, setTurma] = useState('');
-  const [curso, setCurso] = useState('');
+  const [nome, setNome] = useState('');
+  const [autor, setAutor] = useState('');
+  const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const novaMatricula = { aluno, turma, curso };
+    const novoLivro = { nome, autor, preco };
 
     try {
-      const response = await fetch('http://localhost:5000/matriculas', {
+      const response = await fetch('http://localhost:5000/livros', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(novaMatricula),
+        body: JSON.stringify(novoLivro),
       });
       if (response.ok) {
-        alert('Matrícula criada com sucesso!');
+        alert('Livro criado com sucesso!');
         setAluno('');
         setTurma('');
         setCurso('');
-        navigate("/matriculas");
+        navigate("/livros");
       } else {
-        alert('Erro ao criar matrícula.');
+        alert('Erro ao criar livro.');
       }
     } catch (error) {
-      console.error('Erro ao criar matrícula:', error);
+      console.error('Erro ao criar livro:', error);
     }
   };
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Criar Matrícula</h2>
+      <h2>Criar Livro</h2>
       <input
         type="text"
-        placeholder="Nome do Aluno"
-        value={aluno}
-        onChange={(e) => setAluno(e.target.value)}
+        placeholder="Nome do livro"
+        value={nome}
+        onChange={(e) => setNome(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder="Turma"
-        value={turma}
-        onChange={(e) => setTurma(e.target.value)}
+        placeholder="Autor"
+        value={autor}
+        onChange={(e) => setAutor(e.target.value)}
         required
       />
       <input
-        type="text"
-        placeholder="Curso"
-        value={curso}
-        onChange={(e) => setCurso(e.target.value)}
+        type="number"
+        placeholder="Preco"
+        value={preco}
+        onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Criar Matrícula</button>
+      <button type="submit">Criar Livro</button>
     </form>
     </div>
   );

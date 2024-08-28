@@ -9,8 +9,8 @@ export default function Home() {
                 <Link to="/matricula/cadastrar" className="card">
                     <div>Registrar Matrícula</div>
                 </Link>
-                <Link to="/matriculas" className="card">
-                    <div>Lista de Matrícula</div>
+                <Link to="/livros" className="card">
+                    <div>Lista de Livros</div>
                 </Link>
                 <Link to="/matriculas/alterar" className="card">
                     <div>Editar Matrícula</div>

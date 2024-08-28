@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 
-const uri = 'mongodb://localhost:27017';
+const uri = 'mongodb://localhost:27017'
 const client = new MongoClient(uri);
 let collection;
 
@@ -29,13 +29,13 @@ app.use(express.json());
 
 app.post('/livros', async (req, res) => {
   try {
-    const novaMatricula = req.body;
+    const novoLivro = req.body;
     
-    const result = await collection.insertOne(novaMatricula)
+    const result = await collection.insertOne(novoLivro)
     
-    res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'Livro criado com sucesso', livroId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao criar livro', error: err });
   }
 });
 
@@ -60,12 +60,12 @@ app.get('/livros/:id', async (req, res) => {
     const matricula = await collection.findOne({ _id: newId })
 
     if (!matricula) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'livro não encontrada' });
     } else {
       res.status(200).json(matricula);
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao buscar livro', error: err });
   }
 });
 
@@ -79,12 +79,12 @@ app.put('/livros/:id', async (req, res) => {
 
 
     if (result.matchedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'Livro não encontrada' });
     } else {
-      res.status(200).json({ message: 'Matrícula atualizada com sucesso' });
+      res.status(200).json({ message: 'livro atualizada com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao atualizar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao atualizar livro', error: err });
   }
 });
 
@@ -96,15 +96,14 @@ app.delete('/livros/:id', async (req, res) => {
     const result = await collection.deleteOne({ _id: newId });
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ message: 'Matrícula não encontrada' });
+      res.status(404).json({ message: 'livro não encontrado' });
     } else {
-      res.status(200).json({ message: 'Matrícula excluída com sucesso' });
+      res.status(200).json({ message: 'livro excluída com sucesso' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao excluir matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao excluir livro', error: err });
   }
 });
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
