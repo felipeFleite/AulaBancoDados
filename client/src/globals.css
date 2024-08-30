@@ -147,7 +147,7 @@ body {
     color: white
   }
   #container-fot{
-    display: flex;
+    display:flex
   }
   #titulo{
     font-size: 2rem;
