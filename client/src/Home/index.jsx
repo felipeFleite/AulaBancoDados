@@ -6,7 +6,7 @@ export default function Home() {
         
         <div className='container'>
             
-            <h2>Estante Virtual</h2>
+            <h2 id="titulo">ESTANTE VIRTUAL</h2>
             <div className="card-container">
                 <Link to="/livros/cadastrar" className="card">
                     <div>Registrar Livro</div>
