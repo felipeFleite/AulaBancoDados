@@ -1,48 +1,44 @@
 import { useState } from 'react';
+import '../globals.css';
 import { useNavigate } from 'react-router-dom';
 
-export default function UpdateMatricula() {
-  const [id, setId] = useState('');
+
+export default function CreateLivro() {
   const [nome, setNome] = useState('');
   const [autor, setAutor] = useState('');
   const [preco, setPreco] = useState('');
 
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const atualizacao = { nome, autor, preco };
+    const novoLivro = { nome, autor, preco };
 
     try {
-      const response = await fetch(`http://localhost:5000/livros/${id}`, {
-        method: 'PUT',
+      const response = await fetch('http://localhost:5000/livros', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(atualizacao),
+        body: JSON.stringify(novoLivro),
       });
       if (response.ok) {
-        alert('Livro atualizado com sucesso!');
+        alert('Livro criado com sucesso!');
+        setAluno('');
+        setTurma('');
+        setCurso('');
         navigate("/livros");
       } else {
-        alert('Erro ao atualizar livro.');
+        alert('Erro ao criar livro.');
       }
     } catch (error) {
-      console.error('Erro ao atualizar livro:', error);
+      console.error('Erro ao criar livro:', error);
     }
   };
 
   return (
     <div className='container'>
     <form  className="form-container" onSubmit={handleSubmit}>
-      <h2>Atualizar livro</h2>
-      <input
-        type="text"
-        placeholder="ID da livro"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-        required
-      />
+      <h2>Criar Livro</h2>
       <input
         type="text"
         placeholder="Nome do livro"
@@ -64,7 +60,7 @@ export default function UpdateMatricula() {
         onChange={(e) => setPreco(e.target.value)}
         required
       />
-      <button type="submit">Atualizar livro</button>
+      <button type="submit">Criar Livro</button>
     </form>
     </div>
   );
