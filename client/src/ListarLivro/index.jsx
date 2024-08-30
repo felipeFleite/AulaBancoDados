@@ -56,7 +56,7 @@ export default function ReadLivros() {
               <td>{livro._id}</td>
               <td>{livro.nome}</td>
               <td>{livro.autor}</td>
-              <td>{livro.preco}</td>
+              <td>R$: {livro.preco}</td>
               <td>
                 <button onClick={() => handleDelete(livro._id)}>Excluir</button>
               </td>

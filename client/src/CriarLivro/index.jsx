@@ -23,9 +23,9 @@ export default function CreateLivro() {
       });
       if (response.ok) {
         alert('Livro criado com sucesso!');
-        setAluno('');
-        setTurma('');
-        setCurso('');
+        setNome('');
+        setAutor('');
+        setPreco('');
         navigate("/livros");
       } else {
         alert('Erro ao criar livro.');
