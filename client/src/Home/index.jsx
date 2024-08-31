@@ -6,6 +6,7 @@ import Footers from "../Footer.jsx"
 export default function Home() {
     return (
         <>
+        <div className='container'>
         <Carousel
         infiniteLoop
         autoPlay
@@ -25,8 +26,6 @@ export default function Home() {
         </div>
 
         </Carousel>
-        <div className='container'>
-            
             <h2 id="titulo">ESTANTE VIRTUAL</h2>
             <div className="card-container">
                 <Link to="/livros/cadastrar" className="card">

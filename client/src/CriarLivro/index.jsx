@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../globals.css';
 import { useNavigate } from 'react-router-dom';
-
+import Footers from '../Footer';
 
 export default function CreateLivro() {
   const [nome, setNome] = useState('');
@@ -62,6 +62,7 @@ export default function CreateLivro() {
       />
       <button type="submit">Criar Livro</button>
     </form>
+    <Footers/>
     </div>
   );
 }

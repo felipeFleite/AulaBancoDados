@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Footers from '../Footer';
 export default function UpdateLivro() {
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -66,6 +66,7 @@ export default function UpdateLivro() {
       />
       <button type="submit">Atualizar livro</button>
     </form>
+    <Footers/>
     </div>
   );
 }

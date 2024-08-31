@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../globals.css';
-
+import Footers from '../Footer';
 export default function ReadLivros() {
   const [livros, setLivros] = useState([]);
 
@@ -64,6 +64,7 @@ export default function ReadLivros() {
           ))}
         </tbody>
       </table>
+          <Footers/>
     </div>
   );
 }
